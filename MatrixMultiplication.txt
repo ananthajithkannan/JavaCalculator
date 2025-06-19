@@ -1,0 +1,67 @@
+﻿import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter number of rows for matrix A: ");
+        int rowsA = scanner.nextInt();
+        System.out.print("Enter number of columns for matrix A: ");
+        int colsA = scanner.nextInt();
+
+        System.out.print("Enter number of rows for matrix B: ");
+        int rowsB = scanner.nextInt();
+        System.out.print("Enter number of columns for matrix B: ");
+        int colsB = scanner.nextInt();
+
+        if (colsA != rowsB) {
+            System.out.println("Matrix multiplication is not possible.");
+            return;
+        }
+
+        int[][] matrixA = new int[rowsA][colsA];
+        int[][] matrixB = new int[rowsB][colsB];
+        int[][] result = new int[rowsA][colsB];
+
+        System.out.println("Enter elements of matrix A:");
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
+                matrixA[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("Enter elements of matrix B:");
+        for (int i = 0; i < rowsB; i++) {
+            for (int j = 0; j < colsB; j++) {
+                matrixB[i][j] = scanner.nextInt();
+            }
+        }
+
+        // Perform matrix multiplication
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsB; j++) {
+                for (int k = 0; k < colsA; k++) {
+                    result[i][j] += matrixA[i][k] * matrixB[k][j];
+                }
+            }
+        }
+
+        System.out.println("Matrix A:");
+        printMatrix(matrixA);
+        System.out.println("Matrix B:");
+        printMatrix(matrixB);
+        System.out.println("Result:");
+        printMatrix(result);
+
+        scanner.close();
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}

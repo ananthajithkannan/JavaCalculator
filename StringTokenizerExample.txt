@@ -1,0 +1,26 @@
+﻿import java.util.StringTokenizer;
+import java.util.Scanner;
+
+public class StringTokenizerExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        System.out.print("Enter delimiter (default is space): ");
+        String delimiter = scanner.nextLine();
+        if (delimiter.isEmpty()) {
+            delimiter = " ";
+        }
+
+        StringTokenizer tokenizer = new StringTokenizer(input, delimiter);
+
+        System.out.println("Tokens:");
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
+        }
+
+        scanner.close();
+    }
+}
